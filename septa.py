@@ -1,18 +1,23 @@
 #!/usr/bin/python3
 
 import csv
+from sys import argv, exit
 
 data_dir = './data'
 
 # Days
-WD = 1
-SUN = 7
-SAT = 6
+days = {'wd': 1, 'sun': 7, 'sat': 6}
 
-# Options, hardcoded for now:
-day = SUN
-route = '84'
-stop = '1102'
+# Get options from the command line
+if len(argv) != 4:
+    print('USAGE: ' + argv[0] + ' day route stop_id\nSee README')
+    exit(1)
+route = argv[2]
+stop = argv[3]
+if argv[1].lower() not in days:
+    print('day must be WD, SAT, or SUN (case insensitive)')
+    exit(1)
+day = days[argv[1].lower()]
 
 # Get a set of services for this day
 services = set()
@@ -39,4 +44,4 @@ with open(data_dir + '/stop_times.txt', newline='') as st_file:
             times.append(line[2])
 times.sort()
 
-print(times)
+print('\n'.join(times))
