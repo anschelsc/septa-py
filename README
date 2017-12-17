@@ -1,0 +1,7 @@
+A tool to print SEPTA bus and trolley schedules for specific stops.
+
+The data is SEPTA's GTFS info, currently at http://www3.septa.org/developer/?x=-279&y=-992
+
+To run: ./septa.py day route stop_id
+
+where day is one of WD, SAT, or SUN, route is the bus route number or letter, and stop_id can be looked up at http://www3.septa.org/stops/bus-stop-ids.php
